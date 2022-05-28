@@ -1,0 +1,344 @@
+body {
+  padding: 40px;
+  display: flex;
+  font-family: Manrope, sans-serif;
+}
+
+.option {
+  position: relative;
+
+  margin: 0 40px 0 0;
+  max-width: 240px;
+
+  &-checkbox {
+    position: absolute;
+    top: -10000px;
+
+    opacity: 0;
+  }
+
+  &-click-zone {
+    position: absolute;
+    height: 48px;
+    width: 100%;
+    z-index: 1;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+  }
+
+  &-flag {
+    position: absolute;
+    top: 21px;
+    right: 21px;
+    display: block;
+    width: 0;
+    height: 0;
+
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color:  transparent;
+    border-top-color: #616161;
+
+    transition: all ease-in 250ms;
+  }
+
+  &-value {
+    padding: 12px;
+    height: 48px;
+    box-sizing: border-box;
+
+    border: 1px solid #a1a1a1;
+    border-radius: 8px;
+
+    transition: all ease-out 250ms;
+
+    &-text {
+      position: relative;
+      top: 0;
+
+      font-size: 16px;
+      line-height: 24px;
+
+      transition: all ease-out 250ms;
+
+      .base-text {
+        display: block;
+      }
+      .additional-text {
+        display: none;
+      }
+    }
+  }
+
+  &-items {
+    padding: 0 10px 0 25px;
+    margin:8px 0 0;
+    height: 0;
+    overflow: hidden;
+
+    list-style: none;
+
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(97, 97, 97, 0.18), 0 4px 8px rgba(97, 97, 97, 0.18);
+
+    opacity: 0;
+
+    transition: all ease-out 250ms;
+
+    >li {
+      position: relative;
+
+      margin: 0 0 32px;
+
+      font-size: 16px;
+      line-height: 24px;
+
+      &:last-child {
+        margin: 0 0 20px;
+      }
+
+      &:first-child {
+        margin: 20px 0 32px;
+      }
+
+      > input {
+        position: absolute;
+        top: - 10000px;
+        opacity: 0;
+
+        &:checked + label {
+          span {
+            border: 2px solid #0F56B3;
+            background: #0F56B3;
+            box-shadow: 0 0 0 5px rgba(197, 220, 250, 0.5);
+
+            transition: all ease-in 250ms;
+
+            &:after {
+              opacity: 0.5;
+            }
+          }
+
+          > div {
+            top: -10px;
+
+            transition: top ease-in 250ms;
+          }
+        }
+
+        &:checked ~ div {
+          opacity: 1;
+
+          color: #1672EC;
+
+          transition: opacity ease-in 250ms 200ms;
+        }
+      }
+
+      > label {
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
+
+        > span {
+          position: relative;
+
+          display: inline-block;
+          height: 22px;
+          width: 22px;
+          box-sizing: border-box;
+          margin: 0 21px 0 0;
+
+          border: 2px solid #818181;
+          border-radius: 4px;
+          background: #fff;
+          box-shadow: 0 0 0 0 rgba(197, 220, 250, 0.5);
+
+          cursor: pointer;
+
+          transition: all ease-out 250ms 200ms;
+
+          &:after {
+            position: absolute;
+            top: 4px;
+            left: 3px;
+
+            display: block;
+            width: 10px;
+            height: 4px;
+
+            border-style:solid;
+            border-color: #fff;
+            border-width: 0 0 2px 2px;
+
+            opacity: 0;
+            content: "";
+
+            transform: rotate(-45deg);
+          }
+        }
+
+        > div {
+          position: relative;
+          top: 0;
+
+          transition: top ease-out 250ms;
+        }
+      }
+
+      > div {
+        position: absolute;
+        left: 43px;
+        bottom: -15px;
+
+        opacity: 0;
+
+        transition: opacity ease-in 250ms;
+      }
+    }
+  }
+
+  &-checkbox:checked {
+    & ~ .option-value {
+      border: 1px solid #5096F1;
+
+      transition: all ease-in 250ms;
+
+      .option-value-text {
+        top: -23px;
+        padding: 2px 4px;
+
+        display: inline-block;
+
+        background: #fff;
+
+        font-size: 12px;
+        line-height: 16px;
+
+        transition: all ease-in 250ms;
+
+        .base-text {
+          display: none;
+        }
+        .additional-text{
+          display: block;
+        }
+      }
+    }
+
+    & ~ .option-flag {
+      border-top-color: #1672EC;
+
+      transform: scale(1, -1);
+
+      transition: all ease-in 250ms;
+    }
+
+    & ~ .option-items {
+      height: calc(24px * 7 + (7 - 1) * 32px + 40px);// 7 кол-во элементов, 24-высота элмента, 32 - отступ вверх от элемента, 40-умма отступов верхнего и нижнего
+
+      opacity: 1;
+
+      transition: all ease-in 250ms;
+    }
+  }
+}
+
+.option2 {
+  max-width: 460px;
+
+  &-tags {
+    height: 0;
+    margin: 40px 0 0;
+    overflow: hidden;
+
+    transition: height ease-out 250ms;
+
+    &-content {
+      position: relative;
+
+      padding: 0 27px 0 12px;
+      margin: 10px 0 0;
+
+      border: 1px solid #a1a1a1;
+      border-radius: 8px;
+
+      > label {
+        position: absolute;
+        top: -12px;
+
+        padding: 2px 4px;
+
+        background: #fff;
+      }
+
+      > span {
+        display: inline-block;
+        margin: 0 12px 12px 0;
+        padding: 4px 12px;
+
+        background: #ededed;
+        border-radius: 4px;
+        color: #000;
+
+        cursor: pointer;
+
+        transition: all ease-out 250ms;
+
+        &:first-of-type {
+          margin: 12px 12px 0 0;
+        }
+
+        &:hover {
+          background: #616161;
+          color: #fff;
+
+          transition: all ease-in 250ms;
+        }
+      }
+
+      > div {
+        position: absolute;
+        right: 12px;
+        top: calc((100% - 15px) / 2);
+
+        height: 15px;
+        width: 15px;
+
+        &:after,
+        &:before {
+          position: absolute;
+          left: -2px;
+          top: 6px;
+
+          width: 17px;
+          height: 2px;
+          display: block;
+
+          background: #D4B011;
+
+          content: "";
+        }
+
+        &:after {
+          transform: rotate(45deg);
+        }
+
+        &:before {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  .option-checkbox:checked {
+    & ~ .option2-tags {
+      height: calc(3 * 30px + (3 + 1) * 12px);//30-высота элемента, 3-кол-во строк, 12 - отступ меж элементами
+
+      transition: height ease-in 250ms;
+    }
+  }
+}
